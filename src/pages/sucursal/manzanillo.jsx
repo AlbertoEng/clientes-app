@@ -1,4 +1,4 @@
-'use client'
+'use strict'
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { Pregunta } from "../../components/Pregunta";
@@ -35,13 +35,12 @@ export default function MazanilloPage() {
       const respuestas = Array(result.length).fill(null);
       setRespuestas(respuestas);
       setPreguntas(result);
-      console.log(preguntas)
     }
     getPreguntas();
   },[])
 
   
-  const handleRespuesta = (index, valor) => {
+  function handleRespuesta(index, valor) {
     const newRespuestas = [...respuestas];
     newRespuestas[index] = valor;
     setRespuestas(newRespuestas);

@@ -1,3 +1,4 @@
+'use strict'
 import React from 'react'
 import { Inter } from "next/font/google";
 import Image from 'next/image';
@@ -5,6 +6,7 @@ import Link from 'next/link';
 import { FaFacebook, FaInstagram } from 'react-icons/fa6';
 
 const inter = Inter({ subsets: ["latin"] });
+
 const imageLoader = () => {
     return `https://static.wixstatic.com/media/41433d_8d61c286bd1d4ee7bd1ef764a4254ef2~mv2.png/v1/crop/x_0,y_3,w_687,h_1049/fill/w_283,h_432,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Vertical.png`
 }
@@ -15,7 +17,7 @@ const gracias = () => {
             <header className="bg-zinc-800 sticky top-0">
                 <div className="flex items-center">
                     <div className="flex p-5">
-                        <Image loader={imageLoader} unoptimized width={60} height={60} className="max-w-12" src="https://static.wixstatic.com/media/41433d_8d61c286bd1d4ee7bd1ef764a4254ef2~mv2.png/v1/crop/x_0,y_3,w_687,h_1049/fill/w_283,h_432,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Vertical.png" alt="logo camino a comala" />
+                    <Image loader={imageLoader}  unoptimized width={60} height={60} className="max-w-12" src="https://static.wixstatic.com/media/41433d_8d61c286bd1d4ee7bd1ef764a4254ef2~mv2.png/v1/crop/x_0,y_3,w_687,h_1049/fill/w_283,h_432,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Vertical.png" alt="logo camino a comala" /> 
                     </div>
                     <div className="flex flex-col" >
                         <h1 className="text-xl font-bold text-slate-100">Camino a Comala</h1>
