@@ -1,34 +1,70 @@
-'use strict'
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React, { useEffect, useRef } from 'react';
+import Chart from 'chart.js/auto';
+import { Router } from 'next/router';
 
-const inter = Inter({ subsets: ["latin"] });
+const  Home = () => {
+  const chartContainer = useRef(null);
+  const chartInstance = useRef(null);
 
-const imageLoader = () => {
-  return `https://static.wixstatic.com/media/41433d_8d61c286bd1d4ee7bd1ef764a4254ef2~mv2.png/v1/crop/x_0,y_3,w_687,h_1049/fill/w_283,h_432,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Vertical.png`
-}
-
-
-export default function Home() {
-  
-  // verificar en el local storage si existe un user con email
-  // si no existe redirigir a login
-
-  const router = useRouter();
-
-  useEffect(()=>{
+  useEffect(() => {
     if(!localStorage.getItem('user')) {
-      router.push('/auth/login');
+      Router.push('/auth/login');
     }
-  },[])
 
+    const chartData = {
+      labels: ['Dato 1', 'Dato 2', 'Dato 3', 'Dato 4', 'Dato 5'],
+      datasets: [{
+        label: 'Datos',
+        data: [5, 30, 15, 10, 50], // Valores de tus datos
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.7)',
+          'rgba(54, 162, 235, 0.7)',
+          'rgba(255, 206, 86, 0.7)',
+          'rgba(75, 192, 192, 0.7)',
+          'rgba(153, 102, 255, 0.7)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+        ],
+        borderWidth: 1
+      }]
+    };
 
-  return (
-      <main className={`${inter.className}  flex flex-col max-h-full`}>
-        <h1 className="text-3xl text-center mt-5 font-bold">Dashboard Camino a Comala</h1>
-        <h1 className="text-xl text-center mt-5 ">Hola, Leonardo y/o Romina</h1>
-      </main>
-  );
-}
+    const chartConfig = {
+      type: 'pie',
+      data: chartData,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Gráfico Circular de 5 Datos'
+          }
+        }
+      }
+    };
+
+    if (chartContainer && chartContainer.current) {
+      chartInstance.current = new Chart(chartContainer.current, chartConfig);
+    }
+
+    // Cleanup
+    return () => {
+      if (chartInstance.current) {
+        chartInstance.current.destroy();
+      }
+    };
+  }, []);
+
+  return <canvas ref={chartContainer} />;
+};
+
+export default Home;
+

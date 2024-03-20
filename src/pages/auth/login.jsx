@@ -67,7 +67,7 @@ export default function Login() {
   return (
       <main className={`${inter.className}  flex flex-col max-h-full`}>
         <div className="flex p-5 mt-5 w-full  justify-center">
-        <Image loader={imageLoader} priority={true} unoptimized width={60} height={60} className="max-w-12" src="https://static.wixstatic.com/media/41433d_8d61c286bd1d4ee7bd1ef764a4254ef2~mv2.png/v1/crop/x_0,y_3,w_687,h_1049/fill/w_283,h_432,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Vertical.png" alt="logo camino a comala" /> 
+          <Image loader={imageLoader} width={100} height={100} className="max-w-12" src="https://static.wixstatic.com/media/41433d_8d61c286bd1d4ee7bd1ef764a4254ef2~mv2.png/v1/crop/x_0,y_3,w_687,h_1049/fill/w_283,h_432,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Vertical.png" alt="logo camino a comala" /> 
         </div>
         <form onSubmit={handleSubmit} className="flex flex-col justify-center px-3">
           <div className="flex justify-center w-full py-3" >
