@@ -37,7 +37,7 @@ export default function MazanilloPage() {
       setPreguntas(result);
     }
     getPreguntas();
-  },[])
+  },[router])
 
   
   function handleRespuesta(index, valor) {
