@@ -51,7 +51,7 @@ export default function MazanilloPage() {
     if(localStorage.getItem('encuestaCaminoAComala')) {
       router.push('/gracias');
     };
-
+    console.log('enviando respuestas')
     if(respuestas.includes(null)) return;
     const envio = {
       sucursal: 'manzanillo',
