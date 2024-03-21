@@ -26,6 +26,7 @@ export default function Login() {
       .then(response => response.json())
       .then(data => {
         // Handle the data here
+        console.log(data)
         setUsers(data);
       })
       .catch(error => {
@@ -48,9 +49,10 @@ export default function Login() {
     const { leonardo, romina } = users;
     if(email === leonardo.email && password === leonardo.password) {
       localStorage.setItem('user', JSON.stringify(leonardo.email));
-      router.push('/');
+      router.push('/', undefined, { shallow: true });
     } else if(email === romina.email && password === romina.password) {
-      console.log('romina');
+      localStorage.setItem('user', JSON.stringify(romina.email));
+      router.push('/', undefined, { shallow: true });
     } else {
       setAlerta(true);
     }

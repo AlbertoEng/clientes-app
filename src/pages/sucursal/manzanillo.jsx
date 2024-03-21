@@ -62,6 +62,7 @@ export default function MazanilloPage() {
         }
       })
     };
+    console.log(envio)
     const envioRespuestas = await fetch('https://engtech-8cb10-default-rtdb.firebaseio.com/respuestas/.json', {
       method: 'POST',
       body: JSON.stringify(envio)
