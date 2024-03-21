@@ -389,10 +389,15 @@ const Home = () => {
     };
   }, [respuestas4, router]);
 
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    router.push('/auth/login');
+  }
+
   return <div>
 
     <div className='flex px-2 justify-end mt-2'>
-      <button className='bg-red-600 p-2 text-white'>Cerrar Sesion</button>
+      <button onClick={handleLogout} className='bg-red-600 p-2 text-white'>Cerrar Sesion</button>
     </div>
     <h1 className='text-center font-bold text-xl mt-5'>Resultados de la Encuesta Camino a Comala</h1>
     <h1 className='text-center font-bold text-2xl mt-5'>Manzanillo</h1>
