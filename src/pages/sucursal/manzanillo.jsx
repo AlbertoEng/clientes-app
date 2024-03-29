@@ -5,7 +5,7 @@ import { Pregunta } from "../../components/Pregunta";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import { Sugerencia } from "../../components/Sugerencia";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 
 
@@ -46,7 +46,11 @@ export default function MazanilloPage() {
     setRespuestas(newRespuestas);
   }
 
-  const enviandoRespuesta = async ()=>{
+  const enviandoRespuesta = async ( comentario )=>{
+
+    // conseguir comentario
+    console.log(comentario)
+
     // revisando local storage
     if(localStorage.getItem('encuestaCaminoAComala')) {
       router.push('/gracias');
@@ -54,6 +58,7 @@ export default function MazanilloPage() {
     console.log('enviando respuestas')
     if(respuestas.includes(null)) return;
     const envio = {
+      comentario: comentario,
       sucursal: 'manzanillo',
       preguntas: preguntas.map((preg, index)=>{
         return {
@@ -62,7 +67,7 @@ export default function MazanilloPage() {
         }
       })
     };
-    console.log(envio)
+    
     const envioRespuestas = await fetch('https://engtech-8cb10-default-rtdb.firebaseio.com/respuestas/.json', {
       method: 'POST',
       body: JSON.stringify(envio)
@@ -71,8 +76,6 @@ export default function MazanilloPage() {
       localStorage.setItem('encuestaCaminoAComala', 'true');
       router.push('/gracias');
     }
-
-
   }
 
 

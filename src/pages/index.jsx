@@ -6,6 +6,12 @@ import { useRouter } from 'next/router';
 // Opt out of caching for all data requests in the route segment
 
 function extraerRespuestas(NoPreg, objetoPrincipal) {
+
+
+  if (objetoPrincipal == null)  {
+    objetoPrincipal = []
+  };
+
   let opcion0 = 0;
   let opcion1 = 0;
   let opcion2 = 0;
@@ -397,7 +403,8 @@ const Home = () => {
   return <div>
 
     <div className='flex px-2 justify-end mt-2'>
-      <button onClick={handleLogout} className='bg-red-600 p-2 text-white'>Cerrar Sesion</button>
+      <button onClick={()=> router.push('/comments')} className='mr-5 font-bold text-zinc-300 bg-gray-800 p-2 rounded' >Ver comentarios</button>
+      <button onClick={handleLogout} className='bg-red-500 p-2 text-white rounded'>Cerrar Sesion</button>
     </div>
     <h1 className='text-center font-bold text-xl mt-5'>Resultados de la Encuesta Camino a Comala</h1>
     <h1 className='text-center font-bold text-2xl mt-5'>Manzanillo</h1>
