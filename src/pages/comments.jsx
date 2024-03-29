@@ -11,6 +11,7 @@ const Comments = () => {
       const result = await comments.json();
       if(result === null || result === undefined) {
         setComments([]);
+        return;
       };
       // transformando el objeto a arreglo 
       const transformedComments = Object.keys(result).map(key => ({ id: key, comment: result[key].comentario }));
@@ -30,7 +31,7 @@ const Comments = () => {
       <h2 className='mt-5 text-xl'>Lista de Comentarios: </h2>
       {
         comments.length === 0 
-        ? <p>No hay comentarios</p>  
+        ? <p className=''>No hay comentarios</p>  
         : comments.map(( comment )=>{
           return (
             <div key={comment.id} className='p-3 bg-zinc-200 my-2 rounded'>
