@@ -255,7 +255,7 @@ const Home = () => {
           },
           title: {
             display: true,
-            text: '¿Que te parecio la calidad de tus alimentos?'.toUpperCase()
+            text: '¿Cómo evaluas la higiene del lugar?'.toUpperCase()
           }
         }
       }
@@ -316,7 +316,7 @@ const Home = () => {
           },
           title: {
             display: true,
-            text: '¿Que te parecio la calidad de tus alimentos?'.toUpperCase()
+            text: '¿Recibiste un trato amable y atento?'.toUpperCase()
           }
         }
       }
@@ -377,7 +377,7 @@ const Home = () => {
           },
           title: {
             display: true,
-            text: '¿Que te parecio la calidad de tus alimentos?'.toUpperCase()
+            text: '¿El servicio fue rápido?'.toUpperCase()
           }
         }
       }
